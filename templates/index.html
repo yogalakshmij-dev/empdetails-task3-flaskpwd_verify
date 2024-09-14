@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        .delete-btn {
+            background-color: #dc3545; /* Bootstrap danger color */
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    
+        .delete-btn:hover {
+            background-color: #c82333; /* Darker shade for hover */
+        }
+    </style>
+</head>
+<body>
+    <h2>Employee details</h2>
+    <table>
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Employee_id</th>
+            <th>Emp_role</th>
+            <th>Salary</th>
+            <th colspan="2">Action</th>
+        </tr>
+        {% for i in employee %}
+        <tr>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td><a href="{{ url_for('edit', id=i[0]) }}">Edit</a></td>
+            <td>
+                <form action="{{ url_for('delete', id=i[0]) }}" method="post" style="display:inline;">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}

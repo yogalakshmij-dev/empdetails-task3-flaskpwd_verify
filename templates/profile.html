@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+    <h1>Welcome, {{ employee[1] }}!</h1> <!-- employee[1] for Name -->
+    <p><strong>Age:</strong> {{ employee[2] }}</p>
+    <p><strong>Employee ID:</strong> {{ employee[3] }}</p> 
+    <p><strong>Role:</strong> {{ employee[4] }}</p> 
+    <p><strong>Salary:</strong> {{ employee[5] }}</p> 
+    
+    <a href="{{ url_for('logout') }}">Logout</a>
+{% endblock %}
